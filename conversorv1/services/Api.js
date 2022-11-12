@@ -1,16 +1,48 @@
 import axios from "axios";
 import { useState } from "react";
 
-export default async function getCotacao() {
+export default async function getCotacao(moeda) {
 
-    var url = 'https://economia.awesomeapi.com.br/json/available'
+    var url = 'https://economia.awesomeapi.com.br/json/last/'+ moeda
 
     var results = []
 
     await axios.get(url)
         .then(function (response){
 
-            const data = json.stringfy(response.data);
+            const data = response.data
+            const sigla = moeda.replace(/-/i , '')
+            const ask = data.sigla.ask
+            const name = data.sigla.name
+            console.log(sigla)
+            console.log(data)
+            console.log("Cotacao")
+            console.log(ask)
+            console.log(name)
+
+            results = [ask, name]
+
+    })
+    .catch(function (error){
+        console.log(error)
+    })
+
+    return results
+
+}
+
+export async function Cotacao() {
+
+    var url = 'https://economia.awesomeapi.com.br/json/available'
+
+    var data = []
+    var results = []
+    await axios.get(url)
+        .then(function (response){
+            data = JSON.stringify(response.data)
+            JSON.parse(data, (key , value) =>{
+                results.push(key)
+            })
 
     })
     .catch(function (error){
@@ -18,14 +50,4 @@ export default async function getCotacao() {
     })
     return results
 
-}
-
-export function dado(){
-    const data = '{"USD-BRL":"Dólar Americano/Real Brasileiro","USD-BRLT":"Dólar Americano/Real Brasileiro Turismo","CAD-BRL":"Dólar Canadense/Real Brasileiro"}';
-    var list = []
-    JSON.parse(data, (key, value) =>{
-        console.log(key);
-        list.push(key);
-    })
-    return(list)
 }
