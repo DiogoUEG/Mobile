@@ -47,8 +47,8 @@ export default function Form() {
     }
 
     const renderCotacaoList = () => {
-        return moeda.map( (produto) => {
-            return <Picker.Item label={produto} value={produto} />
+        return moeda.map( (produto, index) => {
+            return <Picker.Item key={index} label={produto} value={produto} />
         })
     }
 
