@@ -29,7 +29,6 @@ export default function Form() {
     async function converter() {
 
         const data = await getCotacao(selectedLanguage)
-
         setCotacao(data[0])
         setMsg(data[1])
 

@@ -12,10 +12,8 @@ export default async function getCotacao(moeda) {
 
             const data = response.data
             const sigla = moeda.replace(/-/i , '')
-            const ask = data.sigla.ask
-            const name = data.sigla.name
-            console.log(sigla)
-            console.log(data)
+            const ask = data[sigla].ask
+            const name = data[sigla].name
             console.log("Cotacao")
             console.log(ask)
             console.log(name)
