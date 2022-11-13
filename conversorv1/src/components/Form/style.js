@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native"
 const styles = StyleSheet.create({
     formContext: {
         width: "100%",
-        height: "70%",
+        height: "80%",
         bottom:0,
         backgroundColor:"#e5ebf1",
         alignItems:"center",
@@ -52,7 +52,17 @@ const styles = StyleSheet.create({
         paddingBottom:14,
         marginLeft:12,
         margin:30
-    }
+    },
+    container: {
+        alignItems:"center",
+        justifyContent:"center",
+        backgroundColor:"#E0FFFF",
+        margin:10,
+        paddingTop:14,
+        paddingBottom:14,
+        width:"80%",
+        borderRadius:50,
+       borderWidth: 1},
 
 
 });

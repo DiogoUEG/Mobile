@@ -14,7 +14,7 @@ export default function Form() {
     const [moeda, setMoeda] = useState([]);
     const [resultado, setResultado] = useState(null);
     const [msg, setMsg] = useState(null);
-
+    const [data, setData] = useState([]);
     function validar() {
 
         if (real != null) {
@@ -26,17 +26,10 @@ export default function Form() {
         }
     }
 
-    async function converter() {
-
-        const data = await getCotacao(selectedLanguage)
-        setCotacao(data[0])
-        setMsg(data[1])
-
-        console.log("Conversao")
-        console.log(cotacao)
-        console.log(msg)
-
-        return setResultado((real / cotacao).toFixed(2))
+    function converter() {
+        var digito = real.replace(/,/i , '.')
+        setResultado(( digito * cotacao))
+        return (resultado);
     }
 
     async function cotacaoM() {
@@ -49,6 +42,16 @@ export default function Form() {
         return moeda.map( (produto, index) => {
             return <Picker.Item key={index} label={produto} value={produto} />
         })
+    }
+
+    const get = async (itemValue) => {
+        setSelectedLanguage(itemValue)
+        var dado = await getCotacao(itemValue)
+        setData([])
+        setData(dado)
+        setCotacao(dado[0])
+        setMsg(dado[1])
+        setResultado(0)
     }
 
     useEffect(() => {
@@ -65,7 +68,7 @@ export default function Form() {
                     style={styles.input}
                     selectedValue={selectedLanguage}
                     onValueChange={(itemValue, itemIndex) =>
-                        setSelectedLanguage(itemValue)}>
+                        get(itemValue) }>
                     {renderCotacaoList()}
                 </Picker>
 
@@ -81,10 +84,14 @@ export default function Form() {
                     style={styles.button}
                     onPress={() => { validar() }}
                 >
-                    <Text style={styles.textButton} >Converter para US$</Text>
+                    <Text style={styles.textButton} >Converter</Text>
                 </TouchableOpacity>
             </View>
-
+            
+            <View style={styles.container}>
+            <Text>{msg}</Text>
+            <Text>{cotacao}</Text>
+            </View>
             <Result msg={msg} valor={resultado} />
 
         </View>

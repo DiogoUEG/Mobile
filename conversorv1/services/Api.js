@@ -2,7 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 
 export default async function getCotacao(moeda) {
-
     var url = 'https://economia.awesomeapi.com.br/json/last/'+ moeda
 
     var results = []
@@ -14,11 +13,12 @@ export default async function getCotacao(moeda) {
             const sigla = moeda.replace(/-/i , '')
             const ask = data[sigla].ask
             const name = data[sigla].name
-            console.log("Cotacao")
+            /*console.log("Cotacao")
             console.log(ask)
-            console.log(name)
+            console.log(name)*/
 
             results = [ask, name]
+            //console.log(results)
 
     })
     .catch(function (error){
