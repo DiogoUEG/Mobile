@@ -39,7 +39,11 @@ export async function Cotacao() {
         .then(function (response){
             data = JSON.stringify(response.data)
             JSON.parse(data, (key , value) =>{
+                if (key == ''){
+
+                }else{
                 results.push(key)
+                }
             })
 
     })
