@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         width: "100%",
         height: "80%",
         bottom:0,
-        backgroundColor:"#e5ebf1",
         alignItems:"center",
         marginTop:5,
         borderTopLeftRadius:30,
@@ -34,7 +33,9 @@ const styles = StyleSheet.create({
         backgroundColor: "#f6f6f6",
         height:40,
         margin:12,
-        paddingLeft:10
+        paddingLeft:10,
+        borderWidth: 1.5,
+        borderColor: '#DCDCDC',
     },
 
     textButton:{
@@ -51,18 +52,51 @@ const styles = StyleSheet.create({
         paddingTop:14,
         paddingBottom:14,
         marginLeft:12,
-        margin:30
+        margin: 10
     },
+
+    buttonconverter:{
+        borderRadius:50,
+        alignItems:"center",
+        justifyContent:"center",
+        width:"90%",
+        backgroundColor:"#f6f6f6",
+        paddingTop:14,
+        paddingBottom:14,
+        marginLeft:12,
+        margin: 10,
+        borderWidth: 1.5,
+        borderColor: '#DCDCDC',
+    },
+
+    text:{
+        backgroundColor:"#E0FFFF",
+        borderRadius:50,
+        borderWidth: 1
+
+    },
+
     container: {
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor:"#E0FFFF",
         margin:10,
         paddingTop:14,
         paddingBottom:14,
         width:"80%",
-        borderRadius:50,
-       borderWidth: 1},
+    },
+
+    contentAlert:{
+        marginTop: 20,
+        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "center"
+    },
+
+    warningAlert:{
+        paddingLeft: 10,
+        color: "#000000",
+        fontSize: 16
+    },
 
 
 });

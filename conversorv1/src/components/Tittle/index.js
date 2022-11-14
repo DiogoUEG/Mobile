@@ -5,7 +5,7 @@ import styles from "./style";
 export default function Title(){
     return(
         <View style={styles.boxTitle}>
-            <Text style={styles.textTitle}>Conversor De Moeda V1.1</Text>
+            <Text style={styles.textTitle}>Conversor De Moeda v2.0</Text>
         </View>
     )
 }
