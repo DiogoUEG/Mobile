@@ -2,17 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center'
+        flex: 1
     },
     formContainer: {
         flexDirection: 'row',
         height: 80,
-        marginTop: 40,
         marginBottom: 20,
-        flex: 1,
-        paddingTop: 10,
-        paddingBottom: 10,
         paddingLeft: 30,
         paddingRight: 30,
         justifyContent: 'center',
@@ -64,15 +59,12 @@ export default StyleSheet.create({
         fontSize: 16
     },
     formContainerSingOut: {
-        flexDirection: 'row',
-        height: 80,
-        marginTop: 40,
-        marginBottom: 20,
-        flex: 1,
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 30,
-        paddingRight: 30,
+        height: 10,
+        marginTop: 10,
+        marginBottom: 10,
+        flex: 0.5,
+        paddingLeft: 10,
+        paddingRight: 10,
         justifyContent: 'flex-end',
         alignItems: 'flex-end'
     }
