@@ -12,6 +12,7 @@ export default function HomeScreen(props) {
     const [entityText, setEntityText] = useState('');
     const [entities, setEntities] = useState([]);
     const userID = props.extraData.id;
+    console.log(userID)
     const entityRef = query(collection(db, 'entities'), where("authorID", "==", userID), orderBy('createdAt', 'desc'));
     onSnapshot
     useEffect(() => {
@@ -23,6 +24,7 @@ export default function HomeScreen(props) {
                     const entity = doc.data()
                     entity.id = doc.id
                     newEntities.push(entity)
+                    console.log(newEntities)
                 });
                 setEntities(newEntities)
             },
@@ -74,41 +76,36 @@ export default function HomeScreen(props) {
     }
 
     return (
-        <View>
-            <View >
-                <View style={styles.formContainerSingOut}>
-                    <TouchableOpacity style={styles.button} onPress={singOut}>
-                        <Text style={styles.buttonText}>SingOut</Text>
-                    </TouchableOpacity>
-                </View>
+        <View style={styles.container}>
+            <View style={styles.formContainerSingOut}>
+                <TouchableOpacity style={styles.button} onPress={singOut}>
+                    <Text style={styles.buttonText}>SingOut</Text>
+                </TouchableOpacity>
             </View>
-            <View style={styles.container}>
-
-                <View style={styles.formContainer}>
-                    <TextInput
-                        style={styles.input}
-                        placeholder='Add new entity'
-                        placeholderTextColor="#aaaaaa"
-                        onChangeText={(text) => setEntityText(text)}
-                        value={entityText}
-                        underlineColorAndroid="transparent"
-                        autoCapitalize="none"
+            <View style={styles.formContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder='Add new entity'
+                    placeholderTextColor="#aaaaaa"
+                    onChangeText={(text) => setEntityText(text)}
+                    value={entityText}
+                    underlineColorAndroid="transparent"
+                    autoCapitalize="none"
+                />
+                <TouchableOpacity style={styles.button} onPress={onAddButtonPress}>
+                    <Text style={styles.buttonText}>Add</Text>
+                </TouchableOpacity>
+            </View>
+            {entities && (
+                <View style={styles.listContainer}>
+                    <FlatList
+                        data={entities}
+                        renderItem={renderEntity}
+                        keyExtractor={(item) => item.id}
+                        removeClippedSubviews={true}
                     />
-                    <TouchableOpacity style={styles.button} onPress={onAddButtonPress}>
-                        <Text style={styles.buttonText}>Add</Text>
-                    </TouchableOpacity>
                 </View>
-                {entities && (
-                    <View style={styles.listContainer}>
-                        <FlatList
-                            data={entities}
-                            renderItem={renderEntity}
-                            keyExtractor={(item) => item.id}
-                            removeClippedSubviews={true}
-                        />
-                    </View>
-                )}
-            </View>
+            )}
         </View>
     )
 }
