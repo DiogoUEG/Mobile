@@ -51,7 +51,6 @@ export default function Form() {
     }
 
     async function cotacaoM() {
-
         const moeda = await Cotacao()
         setMoeda(moeda)
     }
@@ -63,9 +62,9 @@ export default function Form() {
     }
 
     const get = async (itemValue) => {
-        setVerificado(true)
         setSelectedLanguage(itemValue)
         var dado = await getCotacao(itemValue)
+        setVerificado(true)
         setCotacao(dado[0])
         setMsg(dado[1])
         setResultado(0)
