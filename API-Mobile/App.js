@@ -1,20 +1,43 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import {createBottomTabNavigator} from "@react-navigation/bottom-tabs"
+import EnderecoDistancia from "./src/Endereco_Distancia";
+import CepDistancia from "./src/Cep_Distancia";
+import LocalAtual from "./src/Local_ atual";
 
+const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Tab.Navigator initialRouteName="Local Atual">
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+        <Tab.Screen
+          name="Endereço"
+          component={EnderecoDistancia}
+          options={{
+            headerTintColor: "#F92E6A"
+          }}
+        />
+
+        <Tab.Screen
+          name="CEP"
+          component={CepDistancia}
+          options={{
+            headerTintColor: "#F92E6A"
+          }}
+        />
+
+        <Tab.Screen
+          name="Local Atual"
+          component={LocalAtual}
+          options={{
+            headerTintColor: "#F92E6A"
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
+  )
+}
